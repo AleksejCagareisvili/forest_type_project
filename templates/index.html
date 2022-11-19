@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+	<meta charset="UTF-8">
+	<title>ML Forest API</title>
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	<!--<link rel = "stylesheet" type = "text/css" href = "my_style_test.css">-->
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/my_style_test.css') }}">
+
+</head>
+
+
+
+<body>
+	<div class="login">
+		<h1>Форма для предсказания типа лесного покрова</h1>
+
+	<form action="{{ url_for('predict')}}" method="POST">
+		<label for="Elevation">Высота дерева (в метрах)</label>
+		<input type="text" id="Elevation" name="Elevation" placeholder="1000-4000">
+		<br>
+		<label for="Aspect">Аспект в градусах по азимуту</label>
+		<input type="text" id="Aspect" name="Aspect" placeholder="0-400">
+		<br>
+		<label for="Slope">Наклон в градусах</label>
+		<input type="text" id="Slope" name="Slope" placeholder="0-70">
+		<br>
+		<label for="Horizontal_Distance_To_Hydrology">Горизонтальное расстояние до поверхностных водоемов</label>
+		<input type="text" id="Horizontal_Distance_To_Hydrology" name="Horizontal_Distance_To_Hydrology" placeholder="0-1400">
+		<br>
+		<label for="Vertical_Distance_To_Hydrology">Вертикальное расстояние до поверхностных водных объектов на поверхности</label>
+		<input type="text" id="Vertical_Distance_To_Hydrology" name="Vertical_Distance_To_Hydrology" placeholder="(-200)-700">
+		<br>
+		<label for="Horizontal_Distance_To_Roadways">Горизонтальное расстояние до ближайшей проезжей части</label>
+		<input type="text" id="Horizontal_Distance_To_Roadways" name="Horizontal_Distance_To_Roadways" placeholder="0-7200">
+		<br>
+		<label for="hillshade_9am">Индекс Hillshade в 9:00, летнее солнцестояние</label>
+		<input type="text" id="hillshade_9am" name="Hillshade_9am" placeholder="0-255">
+		<br>
+		<label for="hillshade_Noon">Индекс Hillshade в 12:00, летнее солнцестояние</label>
+		<input type="text" id="hillshade_Noon" name="Hillshade_Noon" placeholder="0-255">
+		<br>
+		<label for="Hillshade_3pm">Индекс Hillshade в 15:00, летнее солнцестояние</label>
+		<input type="text" id="Hillshade_3pm" name="Hillshade_3pm" placeholder="0-255">
+		<br>
+		<label for="Horizontal_Distance_To_Fire_Points">Расстояние до ближайших очагов возгорания лесных пожаров</label>
+		<input type="text" id="Horizontal_Distance_To_Fire_Points" name="Horizontal_Distance_To_Fire_Points" placeholder="0-7200">
+		<br>
+		<button type="submit" class="btn btn-primary btn-block btn-large">Прогноз</button>
+	</form>
+
+	<br>
+	{{ prediction }}
+
+	</div>
+</body>
+</html>
